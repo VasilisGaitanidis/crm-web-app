@@ -43,7 +43,6 @@ public class CustomerDAOImpl implements CustomerDAO {
 		// Hibernate 5.2+ for Query
 		Query<Customer> theQuery =
 				currentSession.createQuery("from Customer", Customer.class);
-				//createNamedQuery("from Customer", Customer.class);
 		
 		// execute query and get result list
 		List<Customer> customers = theQuery.getResultList();
