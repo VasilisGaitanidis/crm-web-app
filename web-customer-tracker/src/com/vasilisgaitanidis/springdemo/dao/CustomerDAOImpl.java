@@ -22,14 +22,14 @@ import com.vasilisgaitanidis.springdemo.entity.Customer;
 @Repository
 public class CustomerDAOImpl implements CustomerDAO {
 
-	// inject the hibernate session factory from the bean id sessionFactory
+	// inject the Hibernate session factory from the bean id sessionFactory
 	@Autowired 
 	private SessionFactory sessionFactory;	
 	
 	@Override
 	public List<Customer> getCustomers() {
 		
-		// get the current hibernate session
+		// get the current Hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
 		
 		// create a query HQL
@@ -42,6 +42,17 @@ public class CustomerDAOImpl implements CustomerDAO {
 		
 		// return the results		
 		return customers;
+	}
+
+	@Override
+	public void saveCustomer(Customer theCustomer) {
+		
+		// get the current Hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		// save the customer
+		currentSession.save(theCustomer);
+		
 	}
 
 }
