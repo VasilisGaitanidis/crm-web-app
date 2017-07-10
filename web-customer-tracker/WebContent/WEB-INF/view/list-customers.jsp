@@ -51,6 +51,7 @@
 					
 					<!-- construct an "update" link with customer id -->
 					<c:url var="updateLink" value="/customer/showFormForUpdate">
+						<!-- param will be the value after the ? in the url -->
 						<c:param name="customerId" value="${tempCustomer.id}" />
 					</c:url>
 					
