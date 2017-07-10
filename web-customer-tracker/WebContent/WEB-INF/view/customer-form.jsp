@@ -26,6 +26,9 @@
 
 		<form:form action="saveCustomer" modelAttribute="customer"
 			method="POST">
+			
+			<!-- IMPORTANT: associate the data with the given customer/ for update purposes -->
+			<form:hidden path="id" />
 
 			<table>
 				<tbody>
@@ -52,7 +55,7 @@
 		</form:form>
 		
 		<div style="clear; both;"></div>
-		
+
 		<p>
 			<a href="${pageContext.request.contextPath}/customer/list">Back to List</a>
 		</p>
