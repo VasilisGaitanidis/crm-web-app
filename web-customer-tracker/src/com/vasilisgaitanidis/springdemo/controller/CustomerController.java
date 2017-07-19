@@ -80,11 +80,11 @@ public class CustomerController {
 	}
 	
 	@PostMapping("/search")
-	public String searchCustomers(@RequestParam("theSearchName") String theCustomerName,
+	public String searchCustomers(@RequestParam("theSearchName") String theSearchName,
 			Model theModel) {
 		
 		// get the customer(s) given a search first/last name from our service
-		List<Customer> theCustomers = customerService.searchCustomersByName(theCustomerName);
+		List<Customer> theCustomers = customerService.searchCustomersByName(theSearchName);
 		
 		// add the customer(s) to the model
 		theModel.addAttribute("customers", theCustomers);
