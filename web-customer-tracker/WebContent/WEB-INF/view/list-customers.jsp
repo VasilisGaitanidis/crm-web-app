@@ -1,3 +1,6 @@
+<!-- Add support for Spring Form tags -->
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <!-- Adds support for JSTL core tags -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
@@ -37,6 +40,14 @@
 				class="add-button"
 			/>
 			
+			<!-- Add search box -->
+			<form:form action="search" method="POST">
+				Search customer: <input type="text" name="theSearchName" />
+				
+				<input type="submit" value="Search" class="search-button"/>
+			</form:form>
+			
+			
 			<!-- add our HTML table here -->
 			<table>
 				<tr>
@@ -67,14 +78,19 @@
 						<td> ${tempCustomer.lastName} </td>
 						<td> ${tempCustomer.email} </td>
 						
-						<td>
-							<!-- display the update link -->
-							<a href="${updateLink}">Update</a>
-							|
-							<!-- display the delete link -->
+						<td>							
+							
+							<!-- update button -->
+							<input type="button" value="Update"
+							onclick="window.location.href='${updateLink}'; return false;"
+							class="update-button" /> 
+							
+							<!-- delete button -->
 							<!-- onclick JavaScript to prompt the user -->
-							<a href="${deleteLink}"
-								onclick="if (!(confirm('Are you sure you want to delete this customer?'))) return false">Delete</a>
+							<input type="button" value="Delete"
+							onclick="window.location.href='${deleteLink}'; if (!(confirm('Are you sure you want to delete this customer?'))) return false;"
+							class="delete-button" />							
+							
 						</td>
 						
 					</tr>
