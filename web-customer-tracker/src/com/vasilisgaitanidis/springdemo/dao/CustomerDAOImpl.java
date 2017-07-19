@@ -101,4 +101,24 @@ public class CustomerDAOImpl implements CustomerDAO {
 		 */
 	}
 
+	@Override
+	public List<Customer> searchCustomersByName(String theCustomerName) {
+		
+		// get the current Hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		// Hibernate Query Language 
+		String hql = "from Customer where first_name=:customerName or last_name=:customerName";		
+		Query<Customer> theQuery = 	currentSession.createQuery(hql, Customer.class);
+		
+		// SQL injection purposes
+		theQuery.setParameter("customerName", theCustomerName);
+		
+		// execute query and get a result list of customers
+		List<Customer> theCustomers = theQuery.getResultList();
+		
+		// return the customers
+		return theCustomers;
+	}
+
 }

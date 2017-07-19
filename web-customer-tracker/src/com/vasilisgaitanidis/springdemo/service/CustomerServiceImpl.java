@@ -49,4 +49,11 @@ public class CustomerServiceImpl implements CustomerService {
 		customerDAO.deleteCustomer(theId);		
 	}
 
+
+	@Override
+	@Transactional
+	public List<Customer> searchCustomersByName(String theCustomerName) {
+		return customerDAO.searchCustomersByName(theCustomerName);
+	}
+
 }
